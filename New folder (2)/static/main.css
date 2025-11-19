@@ -1,3 +1,11 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     background: linear-gradient(180deg, #d9c8a5 0%, #bfa574 100%);
     color: #3B2F2F;
@@ -50,4 +58,431 @@ body {
 
 .nav-logo:hover {
   transform: scale(1.1);
+}
+
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: scale(1.03);
+}
+
+.lion {
+    height: 350px;
+    width: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay-text h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.overlay-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.view-button {
+    background-color: #f4c542;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-button:hover {
+    background-color: #e3b830;
+    transform: scale(1.05);
+}
+
+.animals {
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+.animals-showcase {
+    margin: 60px auto;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.animals-showcase h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #3B2F2F;
+}
+
+.animal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.animal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(15px, 3vw, 30px); /* responsive gap */
+  width: 100%;
+}
+
+/* Each animal card */
+.animal-card {
+  position: relative;
+  flex: 1 1 clamp(180px, 22vw, 280px); /* fluid width */
+  aspect-ratio: 4 / 3; /* smooth height scaling */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.animal-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image inside */
+.animal-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.animal-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay (on hover) */
+.animal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-card:hover .animal-overlay {
+  opacity: 1;
+}
+
+/* Overlay text */
+.animal-text {
+  color: #fff;
+  text-align: center;
+  padding: clamp(10px, 2vw, 20px);
+}
+
+.animal-text h3 {
+  margin-bottom: clamp(6px, 1vw, 12px);
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 600;
+}
+
+.learn-button {
+  background-color: #f4c542;
+  border: none;
+  border-radius: 6px;
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 18px);
+  font-weight: 600;
+  color: #3B2F2F;
+  font-size: clamp(12px, 1.2vw, 14px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-button:hover {
+  background-color: #e3b830;
+  transform: scale(1.05);
+}
+
+
+/* Side-by-side Animals + Experiences layout */
+.animals-experiences {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: clamp(20px, 5vw, 60px);
+  margin: clamp(40px, 8vw, 100px) auto;
+  max-width: 1200px;
+  padding: 0 clamp(10px, 5vw, 40px);
+}
+
+/* Each info block */
+.info-block {
+  text-align: center;
+  flex: 1 1 clamp(280px, 45%, 520px);
+  max-width: 520px;
+  transition: transform 0.3s ease;
+}
+
+.info-block:hover {
+  transform: translateY(-3px);
+}
+
+/* Section title */
+.info-block .section-title {
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: 600;
+  color: #3B2F2F;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.info-block .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(40px, 6vw, 70px);
+  height: 4px;
+  background-color: #f4c542;
+  border-radius: 2px;
+}
+
+/* Image containers */
+.animals-experiences .image-container {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* keeps perfect proportions */
+}
+
+.animals-experiences .image-container:hover {
+  transform: scale(1.03);
+}
+
+/* Image inside */
+.animals-experiences img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Overlay */
+.animals-experiences .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animals-experiences .image-container:hover .overlay {
+  opacity: 1;
+}
+
+/* Text inside overlay */
+.overlay-text {
+  color: #fff;
+  text-align: center;
+  padding: clamp(10px, 3vw, 25px);
+}
+
+.overlay-text h2 {
+  font-size: clamp(18px, 2vw, 26px);
+  margin-bottom: 10px;
+}
+
+.overlay-text p {
+  font-size: clamp(13px, 1.5vw, 16px);
+  margin-bottom: 15px;
+}
+
+
+.view-button {
+  background-color: #f4c542;
+  border: none;
+  border-radius: 8px;
+  padding: clamp(8px, 1vw, 12px) clamp(16px, 2vw, 28px);
+  font-weight: 600;
+  font-size: clamp(13px, 1.2vw, 15px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #e3b830;
+  transform: scale(1.05);
+}
+
+
+.Box {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 60px auto;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.Box h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #3B2F2F;
+    font-weight: 700;
+}
+
+.Box label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #3B2F2F;
+}
+
+.Box input[type="text"],
+.Box input[type="password"],
+.Box input[type="email"],
+.Box input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.Box input:focus {
+    border-color: #f4c542;
+    box-shadow: 0 0 5px rgba(244, 197, 66, 0.5);
+    outline: none;
+}
+
+.Box button {
+    background-color: #f4c542;
+    color: #3B2F2F;
+    font-weight: 600;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.Box button:hover {
+    background-color: #e3b830;
+    transform: scale(1.05);
+}
+
+.Box .login-link {
+    font-size: 13px;
+    color: #3B2F2F;
+    margin-top: 10px;
+}
+
+.Box .login-link button {
+    background: none;
+    border: none;
+    color: #f4c542;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.Box .login-link button:hover {
+    color: #e3b830;
+    text-decoration: underline;
+}
+
+.Box .signup-link {
+    font-size: 13px;
+    color: #3B2F2F;
+    margin-top: 10px;
+}
+
+.Box .signup-link button {
+    background: none;
+    border: none;
+    color: #f4c542;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.Box .signup-link button:hover {
+    color: #e3b830;
+    text-decoration: underline;
 }
