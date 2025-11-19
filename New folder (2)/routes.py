@@ -1,6 +1,7 @@
-from routes import render_template
+from flask import render_template
+from app import db
 
-def register_routes(app):
+def register_routes(app, db):
     @app.route('/')
     def Home():  # put application's code here
         return render_template("Home.html")
