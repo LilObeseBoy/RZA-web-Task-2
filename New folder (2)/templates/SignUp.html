@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/main.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+        <button onclick="window.location.href='/Map'" class="nav-button">Map</button>
+        <button onclick="window.location.href='/Booking'" class="nav-button">Bookings</button>
+        <input onclick="window.location.href='/'" class="nav-logo" type="image" src="/RZA%20Logo.png" alt="Logo">
+        <button onclick="window.location.href='/ContactUs'" class="nav-button">Contact Us</button>
+        <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
+    </nav>
+<div id="SignUp" class="Box">
+    <h1>Sign Up</h1>
+
+    <label for="SignUpUsername">Username</label>
+    <input type="text" id="SignUpUsername" placeholder="Enter your username">
+
+    <label for="SignUpPassword">Password</label>
+    <input type="password" id="SignUpPassword" placeholder="Enter your password">
+
+    <label for="SignUpEmail">Email</label>
+    <input type="email" id="SignUpEmail" placeholder="Enter your email">
+
+    <label for="SignUpDateOfBirth">Date of Birth</label>
+    <input type="date" id="SignUpDateOfBirth">
+
+    <button onclick="window.location.href='/Account'">Sign Up</button>
+
+    <p class="login-link">
+        Already have an account?
+        <button onclick="window.location.href='/LogIn'">Log In</button>
+    </p>
+</div>
+
+</body>
+</html>

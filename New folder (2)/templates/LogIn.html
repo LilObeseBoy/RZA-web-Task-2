@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/main.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+        <button onclick="window.location.href='/Map'" class="nav-button">Map</button>
+        <button onclick="window.location.href='/Booking'" class="nav-button">Bookings</button>
+        <input onclick="window.location.href='/'" class="nav-logo" type="image" src="/RZA%20Logo.png" alt="Logo">
+        <button onclick="window.location.href='/ContactUs'" class="nav-button">Contact Us</button>
+        <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
+    </nav>
+<div id="LogIn" class="Box">
+    <h1>Log In</h1>
+    <label for="LogInUsername">Username</label>
+    <input type="text" id="LogInUsername" placeholder="Enter your username">
+
+    <label for="LogInPassword">Password</label>
+    <input type="password" id="LogInPassword" placeholder="Enter your password">
+
+    <button onclick="window.location.href='/Account'">Log In</button>
+
+    <p class="signup-link">
+        Don't have an account?
+        <button onclick="window.location.href='/SignUp'">Sign Up</button>
+    </p>
+</div>
+
+</body>
+</html>

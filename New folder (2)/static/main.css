@@ -1,0 +1,53 @@
+body {
+    background: linear-gradient(180deg, #d9c8a5 0%, #bfa574 100%);
+    color: #3B2F2F;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 3vw, 40px); /* smooth gap scaling */
+  padding: clamp(8px, 2vw, 20px) 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  width: clamp(70%, 80%, 90%);
+  max-width: 900px;
+  margin: clamp(10px, 3vw, 25px) auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nav Buttons */
+.nav-button {
+  background: transparent;
+  border: none;
+  color: #3B2F2F;
+  font-weight: 500;
+  font-size: clamp(12px, 1.4vw, 18px); /* fluid text size */
+  cursor: pointer;
+  padding: clamp(6px, 1.2vw, 12px) clamp(10px, 1.8vw, 20px);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #f4c542;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Logo */
+.nav-logo {
+  height: clamp(40px, 7vw, 80px); /* fluid logo scaling */
+  width: clamp(50px, 9vw, 100px);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
