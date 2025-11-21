@@ -14,25 +14,42 @@
     </nav>
 <div id="SignUp" class="Box">
     <h1>Sign Up</h1>
+    <form method="POST">
+        <label for="SignUpUsername">Username</label>
+        <input type="text" id="SignUpUsername" name="SignUpUsername" placeholder="Enter your username">
 
-    <label for="SignUpUsername">Username</label>
-    <input type="text" id="SignUpUsername" placeholder="Enter your username">
+        <label for="SignUpPassword">Password</label>
+        <input type="password" id="SignUpPassword" name="SignUpPassword" placeholder="Enter your password" required>
+        <div class="PasswordRules">
+            <span id="r1" class="bad">• 8+ characters</span><br>
+            <span id="r2" class="bad">• 1 uppercase letter</span><br>
+            <span id="r3" class="bad">• 1 lowercase letter</span><br>
+            <span id="r4" class="bad">• 1 number</span><br>
+            <span id="r5" class="bad">• 1 special character</span>
+        </div>
 
-    <label for="SignUpPassword">Password</label>
-    <input type="password" id="SignUpPassword" placeholder="Enter your password">
+        <label for="SignUpConfirmPassword">Confirm Password</label>
+        <input type="password" id="SignUpConfirmPassword" name="SignUpConfirmPassword" placeholder="Confirm your password" required>
+        <div id="confirmError" class="error"></div>
 
-    <label for="SignUpEmail">Email</label>
-    <input type="email" id="SignUpEmail" placeholder="Enter your email">
+        <label for="SignUpEmail">Email</label>
+        <input type="email" id="SignUpEmail" name="SignUpEmail" placeholder="Enter your email">
 
-    <label for="SignUpDateOfBirth">Date of Birth</label>
-    <input type="date" id="SignUpDateOfBirth">
+        <label for="SignUpPhoneNumber">Phone Number</label>
+        <input type="text" id="SignUpPhoneNumber" name="SignUpPhoneNumber" placeholder="Enter your phone number">
 
-    <button onclick="window.location.href='/Account'">Sign Up</button>
+        <label for="SignUpDateOfBirth">Date Of Birth</label>
+        <input type="date" id="SignUpDateOfBirth" name="SignUpDateOfBirth">
 
-    <p class="login-link">
-        Already have an account?
-        <button onclick="window.location.href='/LogIn'">Log In</button>
-    </p>
+
+        <button type="submit">Sign Up</button>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="/LogIn">Log In</a>
+        </p>
+    </form>
+
 </div>
 
 </body>

@@ -14,18 +14,20 @@
     </nav>
 <div id="LogIn" class="Box">
     <h1>Log In</h1>
-    <label for="LogInUsername">Username</label>
-    <input type="text" id="LogInUsername" placeholder="Enter your username">
+    <form method="POST">
+        <label for="LogInUsername">Username</label>
+        <input type="text" id="LogInUsername" name="LogInUsername" placeholder="Enter your username">
 
-    <label for="LogInPassword">Password</label>
-    <input type="password" id="LogInPassword" placeholder="Enter your password">
+        <label for="LogInPassword">Password</label>
+        <input type="password" id="LogInPassword" name="LogInPassword" placeholder="Enter your password">
 
-    <button onclick="window.location.href='/Account'">Log In</button>
+        <button type="submit">Log In</button>
 
-    <p class="signup-link">
-        Don't have an account?
-        <button onclick="window.location.href='/SignUp'">Sign Up</button>
-    </p>
+        <p class="signup-link">
+            Don't have an account?
+            <a href='/SignUp'>Sign Up</a>
+        </p>
+    </form>
 </div>
 
 </body>

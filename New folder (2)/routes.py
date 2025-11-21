@@ -1,39 +1,62 @@
-from flask import render_template
-from app import db
+from flask import session, render_template, request, url_for, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 
 def register_routes(app, db):
+
     @app.route('/')
-    def Home():  # put application's code here
+    def home():  # put application's code here
         return render_template("Home.html")
 
     @app.route('/Booking')
-    def Booking():  # put application's code here
+    def booking():  # put application's code here
         return render_template("Booking.html")
 
     @app.route('/ContactUs')
-    def ContactUs():  # put application's code here
+    def contactus():  # put application's code here
         return render_template("ContactUs.html")
 
-    @app.route('/LogIn')
-    def LogIn():  # put application's code here
+    @app.route('/LogIn', methods=["GET", "POST"])
+    def login():
+        if request.method == "POST":
+            login_username = request.form["LogInUsername"]
+            login_password = request.form["LogInPassword"]
+            from models import Customer
+            customer = Customer.query.filter_by(Username = login_username).first()
+            if customer and check_password_hash(customer.Password, login_password):
+                print("logged in!")
+            else:
+                print("failed to log in!")
         return render_template("LogIn.html")
 
-    @app.route('/SignUp')
-    def SignUp():  # put application's code here
+    @app.route('/SignUp', methods=["GET", "POST"])
+    def signup():
+        if request.method == "POST":
+            print("do something")
+            from models import Customer
+            raw_password=request.form["SignUpPassword"]
+            hashed_password=generate_password_hash(raw_password,method="pbkdf2:sha256")
+            new_customer = Customer(Username=request.form["SignUpUsername"],
+                                    Password=hashed_password,
+                                    Email=request.form["SignUpEmail"],
+                                    PhoneNumber=request.form["SignUpPhoneNumber"],
+                                    DateOfBirth=request.form["SignUpDateOfBirth"])
+            db.session.add(new_customer)
+            db.session.commit()
+            return render_template("LogIn.html")
         return render_template("SignUp.html")
 
     @app.route('/Map')
-    def Map():  # put application's code here
+    def interactivemap():  # put application's code here
         return render_template("Map.html")
 
     @app.route('/Animals')
-    def Animals():  # put application's code here
+    def animals():  # put application's code here
         return render_template("Animals.html")
 
     @app.route('/Experiences')
-    def Experiences():  # put application's code here
+    def experiences():  # put application's code here
         return render_template("Experiences.html")
 
     @app.route('/Account')
-    def Account():  # put application's code here
+    def account():  # put application's code here
         return render_template("Account.html")

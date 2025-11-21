@@ -6,8 +6,8 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "super_secret_key"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://tl_S2403570:tl_S2403570@ND-COMPSCI/work"
+    app.secret_key = "os_26"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://tl_S2403570:tl_S2403570@ND-COMPSCI/tl_s2403570_rza"
     db.init_app(app)
 
     from routes import register_routes
