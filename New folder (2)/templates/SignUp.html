@@ -11,8 +11,11 @@
         <button onclick="window.location.href='/Booking'" class="nav-button">Bookings</button>
         <input onclick="window.location.href='/'" class="nav-logo" type="image" src="/static/RZALogo.png" alt="Logo">
         <button onclick="window.location.href='/ContactUs'" class="nav-button">Contact Us</button>
-        <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
-    </nav>
+        {% if logged_in %}
+            <button onclick="window.location.href='/Account'" class="nav-button">My Account</button>
+        {% else %}
+            <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
+        {% endif %}    </nav>
 <div id="SignUp" class="Box">
     <h1>Sign Up</h1>
     <form method="POST">

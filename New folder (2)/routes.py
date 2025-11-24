@@ -68,3 +68,16 @@ def register_routes(app, db):
         if "customer_id" not in session:
             return redirect(url_for("login"))
         return render_template("Account.html")
+
+    @app.context_processor
+    def inject_user():
+        return {
+            "logged_in": "customer_id" in session,
+            "username": session.get("username")
+        }
+
+    @app.route('/Logout')
+    def logout():
+        session.clear()
+        return redirect(url_for("home"))
+

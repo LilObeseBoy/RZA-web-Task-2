@@ -5,7 +5,6 @@ class Customer(db.Model):
     CustomerId = db.Column(db.Integer, primary_key=True, nullable=False)
     Username = db.Column(db.String(45), nullable=False)
     Password = db.Column(db.String(255), nullable=False)
-    ConfirmPassword = db.Column(db.String(45), nullable = False)
     Email = db.Column(db.String(100), nullable=False)
     PhoneNumber = db.Column(db.String(11), nullable=False)
     DateOfBirth = db.Column(db.Date, nullable=False)
