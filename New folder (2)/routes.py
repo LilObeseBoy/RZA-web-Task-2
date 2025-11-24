@@ -4,26 +4,32 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def register_routes(app, db):
 
     @app.route('/')
-    def home():  # put application's code here
+    def home():
         return render_template("Home.html")
 
     @app.route('/Booking')
-    def booking():  # put application's code here
+    def booking():
         return render_template("Booking.html")
 
     @app.route('/ContactUs')
-    def contactus():  # put application's code here
+    def contactus():
         return render_template("ContactUs.html")
 
     @app.route('/LogIn', methods=["GET", "POST"])
     def login():
+        customer_id = session.get("customer_id")
+        if customer_id != None:
+            return redirect(url_for("home"))
         if request.method == "POST":
             login_username = request.form["LogInUsername"]
             login_password = request.form["LogInPassword"]
             from models import Customer
             customer = Customer.query.filter_by(Username = login_username).first()
             if customer and check_password_hash(customer.Password, login_password):
-                print("logged in!")
+                session["customer_id"] = customer.CustomerId
+                session["username"] = customer.Username
+                print("Logged in")
+                return redirect(url_for("account"))
             else:
                 print("failed to log in!")
         return render_template("LogIn.html")
@@ -46,17 +52,19 @@ def register_routes(app, db):
         return render_template("SignUp.html")
 
     @app.route('/Map')
-    def interactivemap():  # put application's code here
+    def interactivemap():
         return render_template("Map.html")
 
     @app.route('/Animals')
-    def animals():  # put application's code here
+    def animals():
         return render_template("Animals.html")
 
     @app.route('/Experiences')
-    def experiences():  # put application's code here
+    def experiences():
         return render_template("Experiences.html")
 
     @app.route('/Account')
-    def account():  # put application's code here
+    def account():
+        if "customer_id" not in session:
+            return redirect(url_for("login"))
         return render_template("Account.html")

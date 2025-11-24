@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Sign Up</title>
     <meta charset="UTF-8">
     <link href="/static/main.css" rel="stylesheet">
 </head>
@@ -20,13 +21,6 @@
 
         <label for="SignUpPassword">Password</label>
         <input type="password" id="SignUpPassword" name="SignUpPassword" placeholder="Enter your password" required>
-        <div class="PasswordRules">
-            <span id="r1" class="bad">• 8+ characters</span><br>
-            <span id="r2" class="bad">• 1 uppercase letter</span><br>
-            <span id="r3" class="bad">• 1 lowercase letter</span><br>
-            <span id="r4" class="bad">• 1 number</span><br>
-            <span id="r5" class="bad">• 1 special character</span>
-        </div>
 
         <label for="SignUpConfirmPassword">Confirm Password</label>
         <input type="password" id="SignUpConfirmPassword" name="SignUpConfirmPassword" placeholder="Confirm your password" required>
@@ -36,7 +30,7 @@
         <input type="email" id="SignUpEmail" name="SignUpEmail" placeholder="Enter your email">
 
         <label for="SignUpPhoneNumber">Phone Number</label>
-        <input type="text" id="SignUpPhoneNumber" name="SignUpPhoneNumber" placeholder="Enter your phone number">
+        <input type="tel" id="SignUpPhoneNumber" name="SignUpPhoneNumber" placeholder="Enter your phone number">
 
         <label for="SignUpDateOfBirth">Date Of Birth</label>
         <input type="date" id="SignUpDateOfBirth" name="SignUpDateOfBirth">

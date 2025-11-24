@@ -410,6 +410,7 @@ body {
 .Box input[type="text"],
 .Box input[type="password"],
 .Box input[type="email"],
+.Box input[type="tel"],
 .Box input[type="date"] {
     width: 100%;
     padding: 12px 15px;
@@ -485,4 +486,20 @@ body {
 .Box .signup-link button:hover {
     color: #e3b830;
     text-decoration: underline;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.show-btn {
+    position: relative;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #f4c542;
 }
