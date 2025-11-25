@@ -7,8 +7,21 @@ def register_routes(app, db):
     def home():
         return render_template("Home.html")
 
-    @app.route('/Booking')
+    @app.route('/Booking', methods=["Get", "POST"])
     def booking():
+        if request.method == "POST":
+            from models import ZooBooking
+            db.session.commit()
+            number = int(request.form["number"])
+            ticket_type = request.form["ticket_type"]
+            for i in range(number):
+                new_ticket = ZooBooking(
+                    CustomerId = session["customer_id"],
+                    TicketNum = number,
+                    TicketType = ticket_type
+                )
+                db.session.add(new_ticket)
+                db.session.commit()
         return render_template("Booking.html")
 
     @app.route('/ContactUs')

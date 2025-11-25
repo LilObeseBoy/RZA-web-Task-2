@@ -15,6 +15,26 @@
             <button onclick="window.location.href='/Account'" class="nav-button">My Account</button>
         {% else %}
             <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
-        {% endif %}    </nav>
+        {% endif %}
+</nav>
+
+<div>
+    <form method="POST">
+        <label>
+            What Type of Ticket
+            <select name="ticket_type">
+                <option>Adult</option>
+                <option>Child</option>
+                <option>Senior</option>
+                <option>Family</option>
+            </select>
+        </label>
+        <label>
+            How Many
+            <input type="number" name="number">
+        </label>
+        <button type="submit">Book</button>
+    </form>
+</div>
 </body>
 </html>
