@@ -11,13 +11,11 @@ def register_routes(app, db):
     def booking():
         if request.method == "POST":
             from models import ZooBooking
-            db.session.commit()
             number = int(request.form["number"])
             ticket_type = request.form["ticket_type"]
             for i in range(number):
                 new_ticket = ZooBooking(
                     CustomerId = session["customer_id"],
-                    TicketNum = number,
                     TicketType = ticket_type
                 )
                 db.session.add(new_ticket)
@@ -76,11 +74,18 @@ def register_routes(app, db):
     def experiences():
         return render_template("Experiences.html")
 
-    @app.route('/Account')
+    @app.route('/Account', methods=["GET", "POST"])
     def account():
         if "customer_id" not in session:
-            return redirect(url_for("login"))
-        return render_template("Account.html")
+            return redirect(url_for("home_page"))
+        customer_id = session.get("customer_id")
+        from models import ZooBooking
+        bookings = ZooBooking.query.filter_by(CustomerId=customer_id).all()
+        tickets = []
+        for booking in bookings:
+            new_tickets = ZooBooking.query.filter_by(TicketType=booking.TicketType).all()
+            tickets.extend(new_tickets)
+        return render_template("account.html", ZooBooking=tickets, )
 
     @app.context_processor
     def inject_user():

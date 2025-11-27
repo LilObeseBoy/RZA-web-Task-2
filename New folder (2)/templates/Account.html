@@ -19,5 +19,17 @@
     <div>
         <button onclick="window.location.href='/Logout'">Log Out</button>
     </div>
+{% block content %}
+<ul>
+{% for tickets in ZooBooking %}
+    <li>
+    <form method="POST" action={{ ZooBooking.ZooBookingId }}>
+    Ticket Number: {{ ZooBooking.ZooBookingId }}
+    <input type="submit" value="Delete Ticket">
+    </form>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
 </body>
 </html>

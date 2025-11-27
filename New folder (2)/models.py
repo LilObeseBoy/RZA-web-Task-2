@@ -34,14 +34,12 @@ class ZooBooking(db.Model):
     ZooBookingId = db.Column(db.Integer, primary_key=True, nullable=False)
     CustomerId = db.Column(db.Integer, db.ForeignKey("customer.CustomerId"), nullable=False)
     TicketType = db.Column(db.String(45), nullable=False)
-    TicketNum = db.Column(db.Integer, nullable=False)
 
     customer = db.relationship("Customer", foreign_keys=[CustomerId])
 
-    def __init__(self, CustomerId, TicketType, TicketNum):
+    def __init__(self, CustomerId, TicketType):
         self.CustomerId = CustomerId
         self.TicketType = TicketType
-        self.TicketNum = TicketNum
 
 class BookingDetails(db.Model):
     __tablename__ = "booking_details"
