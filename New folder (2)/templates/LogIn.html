@@ -17,14 +17,20 @@
             <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
         {% endif %}
 </nav>
+{% if error %}
+    <div id="errorBox" class="error">
+        Incorrect username or password.
+        <span class="close-btn" onclick="hideError()">×</span>
+    </div>
+{% endif %}
 <div id="LogIn" class="Box">
     <h1>Log In</h1>
     <form method="POST">
         <label for="LogInUsername">Username</label>
-        <input type="text" id="LogInUsername" name="LogInUsername" placeholder="Enter your username">
+        <input type="text" id="LogInUsername" name="LogInUsername" placeholder="Enter your username" required>
 
         <label for="LogInPassword">Password</label>
-        <input type="password" id="LogInPassword" name="LogInPassword" placeholder="Enter your password">
+        <input type="password" id="LogInPassword" name="LogInPassword" placeholder="Enter your password" required>
 
         <button type="submit">Log In</button>
 
@@ -34,6 +40,6 @@
         </p>
     </form>
 </div>
-
+<script src="/static/main.js"></script>
 </body>
 </html>

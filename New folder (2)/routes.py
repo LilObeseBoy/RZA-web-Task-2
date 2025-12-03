@@ -1,4 +1,4 @@
-from flask import session, render_template, request, url_for, redirect
+from flask import session, render_template, request, url_for, redirect, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
 def register_routes(app, db):
@@ -51,8 +51,9 @@ def register_routes(app, db):
                 print("Logged in")
                 return redirect(url_for("account"))
             else:
-                return render_template("LogIn.html", error="Invalid username or password")
-        return render_template("LogIn.html")
+                return redirect(url_for("login", error="1"))
+        error = request.args.get("error")
+        return render_template("LogIn.html", error=error)
 
     @app.route('/SignUp', methods=["GET", "POST"])
     def signup():
