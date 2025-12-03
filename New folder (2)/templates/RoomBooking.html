@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account</title>
+    <title>Map</title>
     <meta charset="UTF-8">
     <link href="/static/main.css" rel="stylesheet">
 </head>
@@ -16,21 +16,5 @@
         {% else %}
             <button onclick="window.location.href='/LogIn'" class="nav-button login">Log In</button>
         {% endif %}    </nav>
-    <div>
-        <button onclick="window.location.href='/Logout'">Log Out</button>
-    </div>
-{% block content %}
-<ul>
-{% for ticket in tickets %}
-    <li>
-        Ticket: {{ ticket.TicketType }}
-        <form method="POST" action="/DeleteTicket/{{ ticket.ZooBookingId }}">
-            <input type="submit" value="Delete Ticket">
-        </form>
-
-    </li>
-{% endfor %}
-</ul>
-{% endblock %}
 </body>
 </html>

@@ -7,20 +7,29 @@ def register_routes(app, db):
     def home():
         return render_template("Home.html")
 
-    @app.route('/Booking', methods=["Get", "POST"])
+    @app.route('/Booking', methods=["GET", "POST"])
     def booking():
-        if request.method == "POST":
+        if "customer_id" not in session:
+            return redirect(url_for("login"))
+
+        if request.method == "POST" and (request.form["roomyes"] == "none" and request.form["roomno"] == "none"):
             from models import ZooBooking
-            number = int(request.form["number"])
             ticket_type = request.form["ticket_type"]
+            number = int(request.form["number"])
             for i in range(number):
-                new_ticket = ZooBooking(
+                new_ticket=(ZooBooking(
                     CustomerId = session["customer_id"],
                     TicketType = ticket_type
-                )
+                ))
                 db.session.add(new_ticket)
-                db.session.commit()
-        return render_template("Booking.html")
+            db.session.commit()
+        return render_template("Booking.html", booked=True)
+
+
+    @app.route('/RoomBooking', methods=["GET","POST"])
+    def roombooking():
+        return render_template("RoomBooking.html")
+
 
     @app.route('/ContactUs')
     def contactus():
@@ -42,7 +51,7 @@ def register_routes(app, db):
                 print("Logged in")
                 return redirect(url_for("account"))
             else:
-                print("failed to log in!")
+                return render_template("LogIn.html", error="Invalid username or password")
         return render_template("LogIn.html")
 
     @app.route('/SignUp', methods=["GET", "POST"])
@@ -57,8 +66,12 @@ def register_routes(app, db):
                                     Email=request.form["SignUpEmail"],
                                     PhoneNumber=request.form["SignUpPhoneNumber"],
                                     DateOfBirth=request.form["SignUpDateOfBirth"])
-            db.session.add(new_customer)
-            db.session.commit()
+            existing = Customer.query.filter_by(Username=request.form["SignUpUsername"]).first()
+            if existing:
+                return render_template("SignUp.html", error="Username already taken")
+            else:
+                db.session.add(new_customer)
+                db.session.commit()
             return render_template("LogIn.html")
         return render_template("SignUp.html")
 
@@ -74,18 +87,14 @@ def register_routes(app, db):
     def experiences():
         return render_template("Experiences.html")
 
-    @app.route('/Account', methods=["GET", "POST"])
+    @app.route('/Account')
     def account():
         if "customer_id" not in session:
-            return redirect(url_for("home_page"))
+            return redirect(url_for("home"))
         customer_id = session.get("customer_id")
         from models import ZooBooking
-        bookings = ZooBooking.query.filter_by(CustomerId=customer_id).all()
-        tickets = []
-        for booking in bookings:
-            new_tickets = ZooBooking.query.filter_by(TicketType=booking.TicketType).all()
-            tickets.extend(new_tickets)
-        return render_template("account.html", ZooBooking=tickets, )
+        tickets = ZooBooking.query.filter_by(CustomerId=customer_id).all()
+        return render_template("Account.html", tickets=tickets)
 
     @app.context_processor
     def inject_user():
@@ -98,4 +107,19 @@ def register_routes(app, db):
     def logout():
         session.clear()
         return redirect(url_for("home"))
+
+    @app.route('/DeleteTicket/<int:ticket_id>', methods=["POST"])
+    def delete_ticket(ticket_id):
+        from models import ZooBooking
+
+        ticket = ZooBooking.query.filter_by(
+            ZooBookingId=ticket_id,
+            CustomerId=session.get("customer_id")
+        ).first()
+
+        if ticket:
+            db.session.delete(ticket)
+            db.session.commit()
+
+        return redirect(url_for("account"))
 

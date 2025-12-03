@@ -33,8 +33,28 @@
             How Many
             <input type="number" name="number">
         </label>
+        <input type="hidden" id="roomyes" name="roomyes" value="none">
+        <input type="hidden" id="roomno" name="roomno" value="none">
+
         <button type="submit">Book</button>
     </form>
+
+    {% if booked == True %}
+
+        <form>
+            <input type="hidden" id="roomyes" name="roomyes" value="True">
+            <input type="hidden" id="roomno" name="roomno" value="none">
+
+            <button type="submit">Yes</button>
+        </form>
+
+        <form>
+            <input type="hidden" id="roomno" name="roomno" value="False">
+            <input type="hidden" id="roomyes" name="roomyes" value="none">
+            <button type="submit">No</button>
+        </form>
+    {% endif %}
+
 </div>
 </body>
 </html>
